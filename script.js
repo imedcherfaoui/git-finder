@@ -31,7 +31,7 @@ async function getRepos(username) {
 
 function createUserCard(user) {
   const userBio = user.bio ? `<p>${user.bio}</p>` : "";
-  const avatar_url = user.avatar_url || ""; // Ensure a valid avatar URL
+  const avatarUrl = user.avatar_url || ""; // Ensure a valid avatar URL
   const publicRepos = user.public_repos !== undefined ? user.public_repos : 0; // Default to 0 if undefined
 
   const cardHTML = `
