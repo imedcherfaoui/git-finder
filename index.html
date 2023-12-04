@@ -7,10 +7,15 @@
     <title>Github Profile Finder | Imed Cherfaoui</title>
   </head>
   <body>
-    <h1>Github Profile Finder</h1>
-    <input type="text" id="search" placeholder="Enter GitHub username" />
-    <button onclick="searchUser()">Search</button>
-    <div id="main"></div>
+    <form class="user-form" id="form">
+      <input
+        type="text"
+        id="search"
+        autocomplete="off"
+        placeholder="Search a Github User"
+      />
+    </form>
+    <main id="main"></main>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/script.js"></script>
