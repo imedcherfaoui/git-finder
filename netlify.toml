@@ -4,5 +4,4 @@
 [[redirects]]
   from = "/search/*"
   to = "/.netlify/functions/server/:splat"
-  status = 404
-
+  status = 200
