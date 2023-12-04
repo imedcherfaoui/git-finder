@@ -43,7 +43,7 @@ app.get("/script.js", (req, res) => {
   });
 });
 
-app.get("/search/:username", async (req, res) => {
+app.get("/users/:username", async (req, res) => {
   try {
     const response = await axios.get(
       `https://api.github.com/users/${req.params.username}`,

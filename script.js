@@ -1,4 +1,4 @@
-const API_URL = window.location.origin + "/search/";
+const API_URL = "https://phenomenal-naiad-d76466.netlify.app/users/";
 
 const main = document.getElementById("main");
 const search = document.getElementById("search");
