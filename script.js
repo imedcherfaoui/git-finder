@@ -31,23 +31,27 @@ async function getRepos(username) {
 
 function createUserCard(user) {
   const userBio = user.bio ? `<p>${user.bio}</p>` : "";
+  const avatarUrl = user.avatarUrl || ""; // Ensure a valid avatar URL
+  const publicRepos = user.publicRepos !== undefined ? user.publicRepos : 0; // Default to 0 if undefined
+
   const cardHTML = `
-        <div class="card">
-            <div>
-                <img src="${user.avatarUrl}" alt="${user.name}" class="avatar">
-            </div>
-            <div class="user-info">
-                <h2>${user.name}</h2>
-                ${userBio}
-                <ul>
-                    <li>${user.followers} <strong>Followers</strong></li>
-                    <li>${user.following} <strong>Following</strong></li>
-                    <li>${user.publicRepos} <strong>Repos</strong></li>
-                </ul>
-                <div id="repos"></div>
-            </div>
-        </div>
-    `;
+    <div class="card">
+      <div>
+        <img src="${avatarUrl}" alt="${user.name}" class="avatar">
+      </div>
+      <div class="user-info">
+        <h2>${user.name}</h2>
+        ${userBio}
+        <ul>
+          <li>${user.followers} <strong>Followers</strong></li>
+          <li>${user.following} <strong>Following</strong></li>
+          <li>${publicRepos} <strong>Repos</strong></li>
+        </ul>
+        <div id="repos"></div>
+      </div>
+    </div>
+  `;
+
   main.innerHTML = cardHTML;
 }
 
