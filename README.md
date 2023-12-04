@@ -1,4 +1,4 @@
-### Hi there 👋<!--
+### Hi there 👋
 ![Site preview](https://i.ibb.co/bQngXsZ/Capture-d-e-cran-2023-12-04-a-14-51-41.png)
 
 # [git-profile-searcher](https://git-profile-searcher.netlify.app/)
