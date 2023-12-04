@@ -1,4 +1,4 @@
-const APIURL = "https://api.github.com/users/";
+const APIURL = "/search/";
 
 const main = document.getElementById("main");
 const search = document.getElementById("search");
@@ -7,7 +7,7 @@ async function searchUser() {
   const username = search.value.trim();
   if (username) {
     try {
-      const { data } = await axios.get(API_URL + username);
+      const { data } = await axios.get(APIURL + username);
       createUserCard(data);
       getRepos(username);
     } catch (error) {
