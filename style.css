@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 body {
-  background-image: url('./resources/Background.png');
+  background-image: url('./ressources/Background.png');
   color: #fff;
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -34,6 +34,20 @@ body {
 }
 .input:focus {
   outline: none;
+}
+.button {
+  background-color: #4078c0;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #325b96;
 }
 .card {
   max-width: 800px;
