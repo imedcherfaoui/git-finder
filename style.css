@@ -17,9 +17,12 @@ body {
   margin: 0;
 }
 
-.user-input {
+.user-form {
   width: 100%;
   max-width: 700px;
+}
+.user-form input {
+  width: 100%;
   display: block;
   background-color: #f5f5f59f;
   border: none;
@@ -32,29 +35,11 @@ body {
   box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
     0 15px 40px rgba(0, 0, 0, 0.1);
 }
-
-.user-input::placeholder {
+.user-form input::placeholder {
   color: #bbb;
 }
-
-.user-input:focus {
+.user-form input:focus {
   outline: none;
-}
-
-.button {
-  background-color: #4078c0;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  margin-bottom: 2rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: #325b96;
 }
 
 .card {
@@ -120,7 +105,7 @@ body {
     align-items: center;
   }
 
-  .user-input {
+  .user-form {
     max-width: 400px;
   }
 }
