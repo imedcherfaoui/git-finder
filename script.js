@@ -1,5 +1,4 @@
-const isLocalhost = window.location.hostname === "localhost";
-const API_URL = isLocalhost ? "http://localhost:3000/search/" : "/search/";
+const APIURL = "https://api.github.com/users/";
 
 const main = document.getElementById("main");
 const search = document.getElementById("search");
