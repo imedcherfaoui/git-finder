@@ -1,4 +1,4 @@
-const API_URL = "https://phenomenal-naiad-d76466.netlify.app/users/";
+const API_URL = "https://api.github.com/users/";
 
 const main = document.getElementById("main");
 const search = document.getElementById("search");
