@@ -1,5 +1,5 @@
 ### Hi there 👋<!--
-![Site preview](https://postimg.cc/rRDmz1S9)
+![Site preview]([https://postimg.cc/rRDmz1S9](https://i.postimg.cc/Hn27Z3nF/Capture-d-e-cran-2023-12-04-a-14-51-41.png))
 
 # [git-profile-searcher](https://git-profile-searcher.netlify.app/)
 
