@@ -1,27 +1,31 @@
-const API_URL = "http://localhost:3000/search/";
+const isLocalhost = window.location.hostname === "localhost";
+const API_URL = isLocalhost ? "http://localhost:3000/search/" : "/search/";
+
 const main = document.getElementById("main");
 const search = document.getElementById("search");
-const searchButton = document.getElementById("searchButton");
 
-async function getUser(username) {
-  try {
-    const { data } = await axios(API_URL + username);
-    createUserCard(data);
-    getRepos(username);
-  } catch (err) {
-    if (err.response && err.response.status === 404) {
-      createErrorCard("No profile with this username");
-    } else {
-      createErrorCard("Problem fetching user data");
+async function searchUser() {
+  const username = search.value.trim();
+  if (username) {
+    try {
+      const { data } = await axios.get(API_URL + username);
+      createUserCard(data);
+      getRepos(username);
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        createErrorCard("No profile with this username");
+      } else {
+        createErrorCard("Problem fetching user data");
+      }
     }
   }
 }
 
 async function getRepos(username) {
   try {
-    const { data } = await axios(API_URL + username + "/repos");
+    const { data } = await axios.get(API_URL + username + "/repos");
     addReposToCard(data);
-  } catch (err) {
+  } catch (error) {
     createErrorCard("Problem fetching repos");
   }
 }
@@ -29,42 +33,32 @@ async function getRepos(username) {
 function createUserCard(user) {
   const userBio = user.bio ? `<p>${user.bio}</p>` : "";
   const cardHTML = `
-    <div class="card">
-      <div>
-        <img src="${user.avatarUrl}" alt="${user.name}" class="avatar">
-      </div>
-      <div class="user-info">
-        <h2>${user.name}</h2>
-        ${userBio}
-        <ul>
-          <li>${user.followers} <strong>Followers</strong></li>
-          <li>${user.following} <strong>Following</strong></li>
-          <li>${user.publicRepos} <strong>Repos</strong></li>
-        </ul>
-        <div id="repos"></div>
-      </div>
-    </div>
-  `;
-
-  if (main) {
-    main.innerHTML = cardHTML;
-  } else {
-    console.error("Main element not found");
-  }
+        <div class="card">
+            <div>
+                <img src="${user.avatarUrl}" alt="${user.name}" class="avatar">
+            </div>
+            <div class="user-info">
+                <h2>${user.name}</h2>
+                ${userBio}
+                <ul>
+                    <li>${user.followers} <strong>Followers</strong></li>
+                    <li>${user.following} <strong>Following</strong></li>
+                    <li>${user.publicRepos} <strong>Repos</strong></li>
+                </ul>
+                <div id="repos"></div>
+            </div>
+        </div>
+    `;
+  main.innerHTML = cardHTML;
 }
 
 function createErrorCard(msg) {
   const cardHTML = `
-    <div class="card">
-      <h1>${msg}</h1>
-    </div>
-  `;
-
-  if (main) {
-    main.innerHTML = cardHTML;
-  } else {
-    console.error("Main element not found");
-  }
+        <div class="card">
+            <h1>${msg}</h1>
+        </div>
+    `;
+  main.innerHTML = cardHTML;
 }
 
 function addReposToCard(repos) {
@@ -77,16 +71,4 @@ function addReposToCard(repos) {
     repoEl.innerText = repo.name;
     reposEl.appendChild(repoEl);
   });
-}
-
-if (searchButton) {
-  searchButton.addEventListener("click", function () {
-    const user = search.value;
-    if (user) {
-      getUser(user);
-      search.value = "";
-    }
-  });
-} else {
-  console.error("Search button not found");
 }

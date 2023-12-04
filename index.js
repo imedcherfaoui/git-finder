@@ -47,31 +47,6 @@ app.get("/search/:username", async (req, res) => {
   }
 });
 
-app.get("/search/:username/repos", async (req, res) => {
-  try {
-    const response = await axios.get(
-      `https://api.github.com/users/${req.params.username}/repos`,
-      {
-        headers: {
-          Authorization: `Bearer ${process.env.GITHUB_API_KEY}`,
-        },
-      }
-    );
-
-    const reposData = response.data.map((repo) => ({
-      name: repo.name,
-      html_url: repo.html_url,
-    }));
-
-    res.json(reposData);
-  } catch (error) {
-    console.error(error);
-    res
-      .status(error.response ? error.response.status : 500)
-      .json({ error: "Repos not found" });
-  }
-});
-
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
