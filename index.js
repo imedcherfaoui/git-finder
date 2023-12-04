@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/search/:username", async (req, res) => {
+app.get("/:username", async (req, res) => {
   try {
     const response = await axios.get(
       `https://api.github.com/users/${req.params.username}`,
